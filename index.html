@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafiz Muhammad Saadullah - Sr ROR Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0c0f14;
+            --bg-secondary: #11161e;
+            --border-color: #1b2230;
+            --text-primary: #dbe2f2;
+            --text-secondary: #8b92a8;
+            --accent-teal: #00e5a8;
+            --accent-blue: #6aa7ff;
+            --accent-yellow: #ffd166;
+            --accent-red: #ff6b6b;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-teal);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .kpi {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            display: block;
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            background: var(--bg-secondary);
+            padding: 8px 16px;
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--accent-teal);
+            transition: all 0.15s;
+        }
+
+        .tech-tag:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 280px;
+            height: 280px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-blue);
+            object-fit: cover;
+            object-position: center top;
+            background: var(--bg-secondary);
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--accent-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-teal);
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .experience-card {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .experience-info h3 {
+            font-size: 1.4rem;
+            color: var(--accent-teal);
+        }
+
+        .experience-role {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            margin-top: 15px;
+        }
+
+        .experience-achievements {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .experience-achievements li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal);
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            padding: 5px;
+            background: var(--bg-primary);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 120px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image:hover {
+            opacity: 0.8;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            color: var(--accent-teal);
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-badge {
+            background: var(--bg-primary);
+            padding: 4px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            border-color: var(--accent-teal);
+            background: var(--accent-teal);
+            color: var(--bg-primary);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 15, 20, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .lightbox-close {
+            top: 20px;
+            right: 20px;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent-blue);
+        }
+
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-teal);
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-teal);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .kpis {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .project-images {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                height: 180px;
+            }
+
+            .avatar {
+                width: 200px;
+                height: 200px;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                padding: 10px 15px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Hafiz Muhammad Saadullah</h1>
+                    <p class="tagline">Senior Software Engineer | Rails, React, React Native</p>
+
+                    <div class="kpis">
+                        <div class="kpi">
+                            <span class="kpi-value" data-target="9">0</span>
+                            <span class="kpi-label">Projects Shipped</span>
+                        </div>
+                        <div class="kpi">
+                            <span class="kpi-value" data-target="4">0</span>
+                            <span class="kpi-label">Years Experience</span>
+                        </div>
+                        <div class="kpi">
+                            <span class="kpi-value" data-target="500000">0</span>
+                            <span class="kpi-label">Users Served</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-tag">Ruby on Rails</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">RESTful API</span>
+                        <span class="tech-tag">JSON</span>
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">RSpec</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">Stripe</span>
+                        <span class="tech-tag">Braintree</span>
+                        <span class="tech-tag">Material UI</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">Heroku</span>
+                        <span class="tech-tag">Mapbox</span>
+                        <span class="tech-tag">Google Maps API</span>
+                        <span class="tech-tag">Twilio API</span>
+                        <span class="tech-tag">DevOps</span>
+                        <span class="tech-tag">CI/CD</span>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img class="avatar" src="./images/profile.png" alt="Hafiz Muhammad Saadullah">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>
+                    Hi, I'm Muhammad Saadullah — a Senior Software Engineer with 5.5+ years of experience building scalable web and mobile platforms used by real-world businesses.
+                </p>
+                <p>
+                    I help startups and growing businesses build scalable, production-grade web and mobile platforms that perform under real-world pressure.
+                </p>
+                <p>
+                    With 5.5+ years of commercial experience, I specialize in architecting and scaling Ruby on Rails APIs and React Native mobile applications used by large user bases where performance, security, and reliability are non-negotiable.
+                </p>
+                <p style="font-weight: 600; color: var(--accent-teal);">
+                    I don't just write code — I design systems that scale.
+                </p>
+
+                <h3 style="color: var(--accent-blue); margin-top: 30px; margin-bottom: 15px; font-size: 1.3rem;">🚀 What Sets Me Apart</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        Architected backend systems with 90+ models and complex business logic
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        Built cross-platform mobile apps with real-time features & payment systems
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        Rescued and optimized slow, legacy codebases
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        Improved performance of high-load production environments
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        Delivered clean, maintainable architecture for long-term growth
+                    </li>
+                </ul>
+
+                <h3 style="color: var(--accent-blue); margin-top: 30px; margin-bottom: 15px; font-size: 1.3rem;">🛠 Core Expertise</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        <strong>Backend:</strong> Ruby on Rails, REST APIs, JSON services
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        <strong>Mobile:</strong> React Native (iOS & Android)
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        <strong>Frontend:</strong> ReactJS, JavaScript
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        <strong>Databases:</strong> PostgreSQL, MySQL, MongoDB
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        <strong>Integrations:</strong> Stripe, Braintree, Firebase, Google Maps API
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">▹</span>
+                        <strong>DevOps:</strong> Docker, production deployments, monitoring
+                    </li>
+                </ul>
+
+                <h3 style="color: var(--accent-blue); margin-top: 30px; margin-bottom: 15px; font-size: 1.3rem;">🎯 Why Serious Clients Hire Me</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">✔</span>
+                        I think like a product architect, not just a developer
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">✔</span>
+                        I prioritize scalability and clean system design
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">✔</span>
+                        I communicate clearly and take full ownership
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent-teal);">✔</span>
+                        I build solutions that reduce future technical debt
+                    </li>
+                </ul>
+
+                <p style="margin-top: 30px; font-weight: 500; color: var(--accent-blue);">
+                    If you're building a serious product and need an engineer who can architect, optimize, and scale it properly — let's talk.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-logo">☁️</div>
+                        <div class="experience-info">
+                            <h3>Sr Software Engineer / Sr Full Stack Developer</h3>
+                            <p class="experience-role">CareCloud | Aug 2022 - Present</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Leading development of medical transcription billing platform serving healthcare providers and hospitals nationwide.
+                    </p>
+                    <ul class="experience-achievements">
+                        <li>Developed enterprise healthcare information technology services using Ruby on Rails and React</li>
+                        <li>Implemented Action Script integration for complex billing workflows</li>
+                        <li>Maintained high-quality code standards for publicly traded healthcare technology company</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-logo">🚀</div>
+                        <div class="experience-info">
+                            <h3>Sr Software Engineer / Sr Full Stack Developer</h3>
+                            <p class="experience-role">TechClan | Jun 2021 - May 2023</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Led development of multiple high-impact projects including cargo logistics and fitness platforms.
+                    </p>
+                    <ul class="experience-achievements">
+                        <li>Built Easymove cargo app with RoR, React-Native, and Laravel serving thousands of users</li>
+                        <li>Developed Beat the Gym fitness platform with real-time booking and Zoom integration</li>
+                        <li>Implemented 3-tier architecture (backend Rails API, React frontend, React Native mobile)</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-logo">💻</div>
+                        <div class="experience-info">
+                            <h3>Associate Software Engineer</h3>
+                            <p class="experience-role">DevsInc | Sep 2020 - Jun 2021</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Started professional journey developing enterprise solutions and e-commerce integrations.
+                    </p>
+                    <ul class="experience-achievements">
+                        <li>Developed Lead Management System with RoR and ReactJS for sales tracking and commission calculation</li>
+                        <li>Built Recurate Shopify embedded app for product resale functionality</li>
+                        <li>Worked with Test-Driven Development using RSpec for high-quality deliverables</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-images" data-project="0">
+                        <div class="project-image" data-index="0"><img src="./images/seedrs.png" alt="Seedrs"></div>
+                        <div class="project-image" data-index="1"><img src="./images/s1.webp" alt="Seedrs"></div>
+                        <div class="project-image" data-index="2"><img src="./images/s2.webp" alt="Seedrs"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Seedrs - Equity Crowdfunding Platform</h3>
+                        <p class="project-description">
+                            Investment platform that raises campaigns and provides opportunities for investors to invest
+                            and get benefits after campaign closure. Built with Test-Driven Development approach using RSpec.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Ruby on Rails</span>
+                            <span class="tech-badge">TypeScript</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">RSpec</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://seedrs.com/" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-images" data-project="1">
+                        <div class="project-image" data-index="0"><img src="./images/lead-management.png" alt="Lead Management System"></div>
+                        <div class="project-image" data-index="1"><img src="./images/lead-management-2.png" alt="Lead Management"></div>
+                        <div class="project-image" data-index="2"><img src="./images/lead-management.png" alt="Lead Management"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Lead Management System</h3>
+                        <p class="project-description">
+                            Sales CRM for managing leads and processes in organizations. Automates lead tracking, technical resource
+                            allocation, and commission calculations for sales teams.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Ruby on Rails</span>
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">Material UI</span>
+                            <span class="tech-badge">Heroku</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-images" data-project="2">
+                        <div class="project-image" data-index="0"><img src="./images/united-way.png" alt="United Way"></div>
+                        <div class="project-image" data-index="1"><img src="./images/united-way-2.png" alt="United Way Portal"></div>
+                        <div class="project-image" data-index="2"><img src="./images/united-way.png" alt="United Way"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>United Way - Government Assistance Portal</h3>
+                        <p class="project-description">
+                            Government portal built for President Biden's administration to compensate business community.
+                            Features separate portals for admin, agents, and supervisors with American court roles implementation.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Ruby on Rails</span>
+                            <span class="tech-badge">Tailwind CSS</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://inlandsocaluw.org/" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-images" data-project="3">
+                        <div class="project-image" data-index="0"><img src="./images/beatthegym.png" alt="Beat the Gym"></div>
+                        <div class="project-image" data-index="1"><img src="./images/btg1.webp" alt="Beat the Gym"></div>
+                        <div class="project-image" data-index="2"><img src="./images/beatthegym-3.png" alt="Beat the Gym"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Beat the Gym - Fitness Platform</h3>
+                        <p class="project-description">
+                            Comprehensive gym app where gym owners and instructors create activities and users book classes.
+                            Features online training through Zoom integration with 3-tier architecture.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Ruby on Rails</span>
+                            <span class="tech-badge">React.js</span>
+                            <span class="tech-badge">React Native</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://beatthegym.com/" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-images" data-project="4">
+                        <div class="project-image" data-index="0"><img src="./images/racing-tv.png" alt="Racing TV"></div>
+                        <div class="project-image" data-index="1"><img src="./images/racing-tv-2.webp" alt="Racing TV"></div>
+                        <div class="project-image" data-index="2"><img src="./images/r2.webp" alt="Racing TV"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Racing TV - Live Streaming & Betting</h3>
+                        <p class="project-description">
+                            Racing platform where users can bet and watch live horse races from 61 British and Irish racecourses.
+                            Features real-time updates and Stripe payment integration.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Ruby on Rails</span>
+                            <span class="tech-badge">React.js</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">Stripe.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://racingtv.com/" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-images" data-project="5">
+                        <div class="project-image" data-index="0"><img src="./images/s3.webp" alt="You Sound"></div>
+                        <div class="project-image" data-index="1"><img src="./images/s4.webp" alt="You Sound"></div>
+                        <div class="project-image" data-index="2"><img src="./images/s5.webp" alt="You Sound"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>You Sound - Musician Platform</h3>
+                        <p class="project-description">
+                            Music platform where artists and brands upload content with subscription-based listening.
+                            Features live streaming, real-time messaging, product marketplace, and membership tiers.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Ruby on Rails</span>
+                            <span class="tech-badge">Vue.js</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">Mux</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:saadullah2051@gmail.com">saadullah2051@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+923174540913">+92 317 4540913</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <a>Lahore, Pakistan</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com" target="_blank">Connect on LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Hafiz Muhammad Saadullah. Built with Ruby on Rails expertise and dedication</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">✕</button>
+        <button class="lightbox-prev" id="lightbox-prev">◀</button>
+        <button class="lightbox-next" id="lightbox-next">▶</button>
+        <div class="lightbox-content">
+            <img class="lightbox-image" id="lightbox-image" src="" alt="Project screenshot">
+        </div>
+    </div>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Counter animation for KPIs
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Trigger counter animation on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.kpi-value').forEach(counter => {
+                animateCounter(counter);
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        let currentProject = 0;
+        let currentImageIndex = 0;
+        const totalImages = 3; // Each project has 3 images
+
+        // Project images data
+        const projectImages = {
+            0: ['./images/seedrs.png',
+                './images/s1.webp',
+                './images/s2.webp'],
+            1: ['./images/lead-management.png',
+                './images/lead-management-2.png',
+                './images/lead-management.png'],
+            2: ['./images/united-way.png',
+                './images/united-way-2.png',
+                './images/united-way.png'],
+            3: ['./images/beatthegym.png',
+                './images/btg1.webp',
+                './images/beatthegym-3.png'],
+            4: ['./images/racing-tv.png',
+                './images/racing-tv-2.webp',
+                './images/r2.webp'],
+            5: ['./images/s3.webp',
+                './images/s4.webp',
+                './images/s5.webp']
+        };
+
+        // Open lightbox when clicking on project images
+        document.querySelectorAll('.project-image').forEach(image => {
+            image.addEventListener('click', function() {
+                const projectIndex = parseInt(this.closest('.project-images').getAttribute('data-project'));
+                const imageIndex = parseInt(this.getAttribute('data-index'));
+
+                currentProject = projectIndex;
+                currentImageIndex = imageIndex;
+
+                showLightboxImage();
+                lightbox.classList.add('active');
+            });
+        });
+
+        function showLightboxImage() {
+            lightboxImage.src = projectImages[currentProject][currentImageIndex];
+        }
+
+        // Close lightbox
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Previous image
+        lightboxPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            showLightboxImage();
+        });
+
+        // Next image
+        lightboxNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            showLightboxImage();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+            } else if (e.key === 'ArrowLeft') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+                showLightboxImage();
+            } else if (e.key === 'ArrowRight') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                showLightboxImage();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
