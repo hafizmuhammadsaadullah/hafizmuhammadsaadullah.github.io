@@ -42,7 +42,7 @@
 
         /* Header */
         header {
-            padding: 60px 0;
+            padding: 50px 0 40px;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -54,16 +54,17 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--accent-teal);
+            letter-spacing: -0.5px;
         }
 
         .hero-content .tagline {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .kpis {
@@ -82,16 +83,17 @@
         }
 
         .kpi-value {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--accent-blue);
             display: block;
         }
 
         .kpi-label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .tech-stack {
@@ -102,10 +104,10 @@
 
         .tech-tag {
             background: var(--bg-secondary);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border: 1px dashed var(--border-color);
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--accent-teal);
             transition: all 0.15s;
         }
@@ -133,7 +135,7 @@
 
         /* Sections */
         section {
-            padding: 80px 0;
+            padding: 60px 0;
             border-bottom: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -146,11 +148,12 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+            font-size: 1.8rem;
+            margin-bottom: 35px;
             color: var(--accent-blue);
             position: relative;
             display: inline-block;
+            letter-spacing: -0.3px;
         }
 
         .section-title::after {
@@ -166,11 +169,11 @@
         /* About Section */
         .about-content {
             background: var(--bg-secondary);
-            padding: 40px;
+            padding: 35px;
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         .about-content p {
@@ -216,13 +219,14 @@
         }
 
         .experience-info h3 {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             color: var(--accent-teal);
+            font-weight: 600;
         }
 
         .experience-role {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
         .experience-description {
@@ -297,15 +301,17 @@
         }
 
         .project-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--accent-teal);
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .project-description {
             color: var(--text-secondary);
             margin-bottom: 15px;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
         .project-tech {
@@ -477,7 +483,7 @@
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .kpis {
@@ -495,11 +501,11 @@
 
         @media (max-width: 560px) {
             .section-title {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .project-images {
@@ -537,7 +543,7 @@
                             <span class="kpi-label">Projects Shipped</span>
                         </div>
                         <div class="kpi">
-                            <span class="kpi-value" data-target="4">0</span>
+                            <span class="kpi-value" data-target="5.5">0</span>
                             <span class="kpi-label">Years Experience</span>
                         </div>
                         <div class="kpi">
